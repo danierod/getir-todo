@@ -44,4 +44,21 @@ describe('TodoList', () => {
     fireEvent.click(updateTodoButton);
     expect(screen.getAllByText(/U-TODO\s[0-9]/i).length).toEqual(1);
   });
+
+  test('marks a todo as completed when mark as completed button is clicked', () => {
+    render(<TodoList />);
+
+    const createTodoButton = screen.getByText(/Create Todo/i);
+
+    expect(createTodoButton).toBeInTheDocument();
+
+    fireEvent.click(createTodoButton);
+    expect(screen.getAllByText(/TODO\s[0-9]/i).length).toEqual(1);
+
+    const markCompletedButton = screen.getByText(/Mark completed/i);
+    expect(markCompletedButton).toBeInTheDocument();
+
+    fireEvent.click(markCompletedButton);
+    expect(screen.queryByText(/Mark completed/i)).toBeNull();
+  });
 });
