@@ -1,23 +1,23 @@
-import { CREATE, UPDATE } from './todo.types';
+import { CREATE, UPDATE } from './todo.actions';
 
 const INITIAL_STATE = {
   items: [],
 };
 
-const reducer = (state = INITIAL_STATE, { type, todo }) => {
+const reducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case CREATE:
       return {
         ...state,
-        items: [...state.items, todo],
+        items: [...state.items, payload],
       };
 
     case UPDATE: {
       const index = state.items.findIndex(
-        (prevTodo) => prevTodo.id === todo.id,
+        (prevTodo) => prevTodo.id === payload.id,
       );
       const newTodos = [...state.items];
-      newTodos[index] = todo;
+      newTodos[index] = payload;
 
       return {
         ...state,

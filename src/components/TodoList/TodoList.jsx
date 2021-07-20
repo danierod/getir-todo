@@ -11,7 +11,6 @@ const TodoList = () => {
     const id = Math.floor(Math.random() * 100);
     dispatch(
       createTodo({
-        id,
         title: `Todo ${id}`,
       }),
     );
