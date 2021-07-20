@@ -38,9 +38,6 @@
     "no-console": "off",
     "react/prop-types": 0,
     "prettier/prettier": ["error"],
-    "compat/compat": "off",
-    "object-curly-spacing": ["warn", "always"],
-    "array-bracket-spacing": ["warn", "always"],
-    "computed-property-spacing": ["warn", "always"]
+    "compat/compat": "off"
   }
 }
