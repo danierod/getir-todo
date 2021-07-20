@@ -4,9 +4,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Getir - TODO
-        </p>
+        <p>Getir - TODO</p>
       </header>
     </div>
   );
