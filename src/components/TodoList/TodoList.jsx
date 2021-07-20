@@ -1,23 +1,30 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createTodo, updateTodo } from '../../redux/Todo/todo.actions';
 
-const TodoList = ({ todos, dispatchCreateTodo, dispatchUpdateTodo }) => {
+const TodoList = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos.items);
+
   const handleCreateTodo = () => {
     const id = Math.floor(Math.random() * 100);
-    dispatchCreateTodo({
-      id,
-      title: `Todo ${id}`,
-    });
+    dispatch(
+      createTodo({
+        id,
+        title: `Todo ${id}`,
+      }),
+    );
   };
 
   const handleUpdateTodo = (todo) => {
     const title = `U-${todo.title}`;
-    dispatchUpdateTodo({
-      ...todo,
-      title,
-    });
+    dispatch(
+      updateTodo({
+        ...todo,
+        title,
+      }),
+    );
   };
 
   return (
@@ -38,17 +45,4 @@ const TodoList = ({ todos, dispatchCreateTodo, dispatchUpdateTodo }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos.items,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    dispatchCreateTodo: (todo) => dispatch(createTodo(todo)),
-    dispatchUpdateTodo: (todo) => dispatch(updateTodo(todo)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default TodoList;
