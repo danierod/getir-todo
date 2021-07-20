@@ -12,6 +12,7 @@ const TodoList = () => {
     dispatch(
       createTodo({
         title: `Todo ${id}`,
+        id: Math.floor(Math.random() * 100),
       }),
     );
   };

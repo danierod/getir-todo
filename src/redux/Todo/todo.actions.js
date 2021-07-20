@@ -1,15 +1,8 @@
-import { createAction, nanoid } from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 
 export const CREATE = 'todos/create';
 export const UPDATE = 'todos/update';
 
-export const createTodo = createAction(CREATE, function prepare(todo) {
-  return {
-    payload: {
-      ...todo,
-      id: nanoid(),
-    },
-  };
-});
+export const createTodo = createAction(CREATE);
 
 export const updateTodo = createAction(UPDATE);
