@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { createTodo, updateTodo } from '../../redux/Todo/todo.actions';
+import { fetchTodo, postTodo, putTodo } from '../../redux/Todo/todo.actions';
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -12,10 +12,14 @@ const TodoList = () => {
     state.todos.items.filter((todo) => todo.isCompleted),
   );
 
+  useEffect(() => {
+    dispatch(fetchTodo());
+  }, [dispatch]);
+
   const handleCreateTodo = () => {
     const id = Math.floor(Math.random() * 100);
     dispatch(
-      createTodo({
+      postTodo({
         title: `Todo ${id}`,
         id: Math.floor(Math.random() * 100),
         isCompleted: false,
@@ -26,7 +30,7 @@ const TodoList = () => {
   const handleUpdateTodo = (todo) => {
     const title = `U-${todo.title}`;
     dispatch(
-      updateTodo({
+      putTodo({
         ...todo,
         title,
       }),
@@ -35,7 +39,7 @@ const TodoList = () => {
 
   const handleMarkCompleted = (todo) => {
     dispatch(
-      updateTodo({
+      putTodo({
         ...todo,
         isCompleted: true,
       }),

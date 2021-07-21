@@ -1,4 +1,4 @@
-import { CREATE, UPDATE } from './todo.actions';
+import { TODO_CREATE, TODO_SET, TODO_UPDATE } from './todo.actions';
 
 const INITIAL_STATE = {
   items: [],
@@ -6,13 +6,19 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
-    case CREATE:
+    case TODO_SET:
+      return {
+        ...state,
+        items: [...payload.items],
+      };
+
+    case TODO_CREATE:
       return {
         ...state,
         items: [...state.items, payload],
       };
 
-    case UPDATE: {
+    case TODO_UPDATE: {
       const index = state.items.findIndex(
         (prevTodo) => prevTodo.id === payload.id,
       );
