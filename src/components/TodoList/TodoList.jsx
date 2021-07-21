@@ -1,76 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import './TodoList.scss';
+import TodoListItem from './TodoListItem/TodoListItem';
+import TodoListSection from './TodoListSection/TodoListSection';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodo, postTodo, putTodo } from '../../redux/Todo/todo.actions';
-
-const TodoList = () => {
-  const dispatch = useDispatch();
-  const todos = useSelector((state) =>
-    state.todos.items.filter((todo) => !todo.isCompleted),
-  );
-  const completedTodos = useSelector((state) =>
-    state.todos.items.filter((todo) => todo.isCompleted),
-  );
-
-  useEffect(() => {
-    dispatch(fetchTodo());
-  }, [dispatch]);
-
-  const handleCreateTodo = () => {
-    const id = Math.floor(Math.random() * 100);
-    dispatch(
-      postTodo({
-        title: `Todo ${id}`,
-        id: Math.floor(Math.random() * 100),
-        isCompleted: false,
-      }),
-    );
-  };
-
-  const handleUpdateTodo = (todo) => {
-    const title = `U-${todo.title}`;
-    dispatch(
-      putTodo({
-        ...todo,
-        title,
-      }),
-    );
-  };
-
-  const handleMarkCompleted = (todo) => {
-    dispatch(
-      putTodo({
-        ...todo,
-        isCompleted: true,
-      }),
-    );
-  };
-
+const TodoList = ({ title, children, handleCreateTodo }) => {
   return (
-    <>
-      <div>Todo List</div>
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <div>{todo.title}</div>
-          <button type="button" onClick={handleUpdateTodo.bind(null, todo)}>
-            Update Todo
-          </button>
-          <button type="button" onClick={handleMarkCompleted.bind(null, todo)}>
-            Mark completed
-          </button>
-        </div>
-      ))}
-      <div>Completed</div>
-      {completedTodos.map((todo) => (
-        <div key={todo.id}>
-          <div>{todo.title}</div>
-        </div>
-      ))}
-      <button type="button" onClick={handleCreateTodo}>
+    <div className="todo-list">
+      <div className="todo-list__title">{title}</div>
+      {children}
+      <button
+        className="todo-list__create-task"
+        type="button"
+        onClick={handleCreateTodo}
+      >
         Create Todo
       </button>
-    </>
+    </div>
   );
 };
 
+TodoList.Section = TodoListSection;
+TodoList.Item = TodoListItem;
 export default TodoList;

@@ -1,0 +1,108 @@
+.todo-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(#fff, 0.05);
+    border-radius: 8px;
+    padding: 25px 32px;
+    width: 500px;
+    max-width: 90%;
+    row-gap: 24px;
+
+    &__title {
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 16px;
+        max-width: 176px;
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+            line-height: 100%;
+        }
+        span {
+            display: block;
+            font-size: 14px;
+            color: #808080;
+            font-weight: 500;
+        }
+    }
+
+    &__section {
+        &__title {
+            padding-bottom: 8px;
+            border-bottom: 1px solid darken(#808080, 15%);
+            margin-bottom: 8px;
+            h3 {
+                margin: 0;
+                font-size: 18px;
+                color: white;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+
+        &__title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffffde;
+            padding: 8px 8px 8px 0;
+
+            &.completed {
+                text-decoration: line-through;
+                color: #808080;
+            }
+        }
+
+        &__actions {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+        }
+    }
+
+    &__create-task {
+        position: absolute;
+        top: 24px;
+        right: 32px;
+
+        $button-bg-color: #9d111e;
+        min-height: 28px;
+        padding: 6px 8px;
+        background-color: $button-bg-color;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        border-radius: 3px;
+
+        &:hover {
+            background-color: darken($button-bg-color, 5%);
+        }
+    }
+}
+
+button {
+    $button-bg-color: #191c23;
+    min-height: 28px;
+    padding: 6px 8px;
+    background-color: $button-bg-color;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: darken($button-bg-color, 5%);
+    }
+}
