@@ -16,6 +16,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "classnames": "^2.3.1",
+    "msw": "^0.32.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -37,7 +38,6 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
-    "msw": "^0.32.1",
     "prettier": "^2.3.2"
   },
   "eslintConfig": {
