@@ -9,13 +9,12 @@ import {
 } from './todo.actions';
 
 function* fetchTodos() {
-  console.log('fetching todos ');
   const response = yield fetch('/todos', {
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
   });
   const todos = yield response.json();
-  console.log('Get todos: ', todos);
+
   yield put(setTodos(todos));
 }
 
@@ -24,7 +23,6 @@ export function* watchFetchTodosSaga() {
 }
 
 function* postTodo({ payload }) {
-  console.log('posting todo: ', payload);
   const response = yield fetch('/todos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -40,7 +38,6 @@ export function* watchPostTodoSaga() {
 }
 
 function* putTodo({ payload }) {
-  console.log('putting todo: ', payload);
   const response = yield fetch('/todos', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

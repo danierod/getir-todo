@@ -1,16 +1,11 @@
 import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
-import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import todoReducer from '../redux/Todo/todo.reducer';
+import { generateStore } from '../redux/store';
 
 function render(
   ui,
-  {
-    preloadedState,
-    store = configureStore({ reducer: { todos: todoReducer }, preloadedState }),
-    ...renderOptions
-  } = {},
+  { preloadedState, store = generateStore(), ...renderOptions } = {},
 ) {
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>;

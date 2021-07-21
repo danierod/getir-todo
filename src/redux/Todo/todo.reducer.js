@@ -30,6 +30,7 @@ const reducer = (state = INITIAL_STATE, { type, payload }) => {
         items: newTodos,
       };
     }
+
     default:
       return state;
   }
