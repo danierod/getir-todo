@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start --watch",
+    "start": "npx msw init public/ --save && react-scripts start --watch",
     "build": "react-scripts build",
     "test": "react-scripts test --watch",
     "eject": "react-scripts eject",
@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
+    "msw": "^0.32.1",
     "prettier": "^2.3.2"
   },
   "eslintConfig": {
@@ -64,5 +65,8 @@
       "yarn lint",
       "yarn lint:fix"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

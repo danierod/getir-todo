@@ -5,6 +5,9 @@ import './index.css';
 import App from './App';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import { worker } from './mocks/browser';
+
+worker.start();
 
 ReactDOM.render(
   <Provider store={store}>
