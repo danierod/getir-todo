@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import { v4 as uuidv4 } from 'uuid';
 
 let todos = [];
 
@@ -7,7 +8,9 @@ export const clearTodos = () => {
 };
 
 const addTodo = (todo) => {
-  todos.push(todo);
+  const newTodo = { ...todo, id: uuidv4(), isCompleted: false };
+  todos.push(newTodo);
+  return newTodo;
 };
 
 const updateTodo = (todo) => {
@@ -21,8 +24,8 @@ const handlers = [
   }),
 
   rest.post('/todos', (req, res, ctx) => {
-    addTodo(req.body);
-    return res(ctx.status(200), ctx.json(req.body));
+    const newTodo = addTodo(req.body);
+    return res(ctx.status(200), ctx.json(newTodo));
   }),
 
   rest.put('/todos', (req, res, ctx) => {
