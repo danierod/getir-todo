@@ -67,6 +67,7 @@ const TodoListItem = ({ todo, handleSaveTodo, toggleIsCompleted }) => {
       >
         {isEditing ? (
           <input
+            className="todo-list__item__title__input"
             ref={inputRef}
             aria-label="todo-item-edit-input"
             defaultValue={todo.title}

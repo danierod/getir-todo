@@ -47,6 +47,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        gap: 16px;
         align-items: center;
         justify-content: space-between;
         padding: 8px 0;
@@ -56,10 +57,25 @@
             font-weight: 500;
             color: #ffffffde;
             padding: 8px 8px 8px 0;
+            flex: 1;
 
             &.completed {
                 text-decoration: line-through;
                 color: #808080;
+            }
+
+            &__input {
+                background: none;
+                border: none;
+                border-bottom: 1px solid #fff;
+                color: #ffffffde;
+                width: 100%;
+                font-size: 16px;
+                font-weight: 500;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
 
